@@ -3,7 +3,9 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const path = require('path');
-
+const User = require('./models/user');
+const affilesRoutes = require('./routes/affiles');
+const userRoutes = require('./routes/user');
 mongoose.connect('mongodb+srv://matrixfoot:tct1234@cluster0.di2ih.mongodb.net/<dbname>?retryWrites=true&w=majority',
   { useNewUrlParser: true,
     useUnifiedTopology: true })
@@ -46,7 +48,10 @@ mongoose.connect('mongodb+srv://matrixfoot:tct1234@cluster0.di2ih.mongodb.net/<d
       next();
     }
   });
- 
+  app.use('/api/affiles', affilesRoutes);
+  app.use('/api/auth', userRoutes);
+  app.use('/api/users', userRoutes);
+  app.use(express.static(path.join(__dirname, 'images')));
   app.get('*', (request, response) => {
     response.sendFile(path.join(__dirname, 'uploaded fiche'));
   })
