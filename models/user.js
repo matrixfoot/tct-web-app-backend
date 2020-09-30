@@ -7,7 +7,7 @@ const userSchema = mongoose.Schema({
   firstname: { type: String, required: true },
   lastname: { type: String, required: true },
   fonction: { type: String, required: true },
-  direction: { type: String, required: true },
+  contact: { type: String, required: true },
   role: {
     type: String,
     default: 'basic',

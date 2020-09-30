@@ -53,7 +53,7 @@ mongoose.connect('mongodb+srv://matrixfoot:tct1234@cluster0.di2ih.mongodb.net/<d
   app.use('/api/users', userRoutes);
   app.use(express.static(path.join(__dirname, 'images')));
   app.get('*', (request, response) => {
-    response.sendFile(path.join(__dirname, 'uploaded fiche'));
+    response.sendFile(path.join(__dirname, 'adherentsfiche'));
   })
   
  
